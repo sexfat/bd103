@@ -1,0 +1,22 @@
+{
+  "name": "bd103",
+  "version": "1.0.0",
+  "description": "bd103 教學",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sexfat/bd103.git"
+  },
+  "author": "bryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sexfat/bd103/issues"
+  },
+  "homepage": "https://github.com/sexfat/bd103#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
