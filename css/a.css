@@ -1,8 +1,2 @@
-.box {
-    margin: 10px;
-}
-.box .gund {
-    padding: 10px;
-    opacity: .8;
-    border-radius: 10px;
-}
+.box p {
+  width: 150px; }

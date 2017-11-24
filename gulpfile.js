@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var cleanCSS = require('gulp-clean-css');
+var sass = require('gulp-sass');
+var browserSync = require('browser-sync').create();
+var reload      = browserSync.reload;
 
 
 //  uglify js
@@ -19,6 +22,25 @@ gulp.task('minify-css', function() {
     .pipe(cleanCSS())
     .pipe(gulp.dest('css/bundle/'));
   });
+
+// sass
+
+gulp.task('sass', function() {
+    // 将妳的任務代碼放在這
+    return gulp.src('sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('css/'));
+  });
+
+
+//sass watch
+
+gulp.task('sass:watch', function () {
+    gulp.watch('./sass/*.scss', ['sass']);
+  });
+
+
+
 
 
   
