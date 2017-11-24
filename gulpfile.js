@@ -39,7 +39,20 @@ gulp.task('sass:watch', function () {
     gulp.watch('./sass/*.scss', ['sass']);
   });
 
+//  browserSync 瀏覽器同步
 
+gulp.task('serve', ['sass'], function() {
+    
+        browserSync.init({
+            server: {
+                baseDir: "./",
+                index: "a.html"
+            }
+        });
+    
+        gulp.watch("sass/*.scss", ['sass']);
+        gulp.watch("*.html").on('change', reload);
+    });
 
 
 
