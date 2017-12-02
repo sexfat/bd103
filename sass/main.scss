@@ -1,14 +1,60 @@
 @import "base/reset";
-
 @import "base/var";
 @import "base/font";
 @import "layout/header";
-
-
 .box {
     margin: $num;
     padding: $num;
 }
 
+.box1 {
+    margin: 40 + 10 + em;
+    width: 40px + 10px;
+    padding: 40 + 50px;
+    padding: $num + $num1;
+}
 
+.box2 {
+    margin: 40 * 40 + px;
+    width: $num * $num1;
+    padding: 40 * 10em;
+}
 
+.box3 {
+    font: (40px / 10px);
+    width: $num / $num1;
+}
+
+h2 {
+    font-size: (10px + 30px) * 5;
+}
+
+.box {
+    background-color: #111111 * 5;
+}
+
+.box4 {
+    width: ceil(10.1);
+    width: round(10.4);
+    width: floor(10.9);
+}
+
+h1 {
+    font-size: $font-base * 5;
+}
+
+h2 {
+    font-size: floor($font-base * 4.5);
+}
+
+h3 {
+    font-size: floor($font-base * 3);
+}
+
+h4 {
+    font-size: floor($font-base * 2.6);
+}
+
+h5 {
+    font-size: floor($font-base * 1.6);
+}

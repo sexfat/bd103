@@ -60,3 +60,44 @@ body {
 .box {
   margin: 40px;
   padding: 40px; }
+
+.box1 {
+  margin: 50em;
+  width: 50px;
+  padding: 90px;
+  padding: 120px; }
+
+.box2 {
+  margin: 1600px;
+  width: 3200px;
+  padding: 400em; }
+
+.box3 {
+  font: 4;
+  width: 0.5px; }
+
+h2 {
+  font-size: 200px; }
+
+.box {
+  background-color: #555555; }
+
+.box4 {
+  width: 11;
+  width: 10;
+  width: 10; }
+
+h1 {
+  font-size: 70px; }
+
+h2 {
+  font-size: 63px; }
+
+h3 {
+  font-size: 42px; }
+
+h4 {
+  font-size: 36px; }
+
+h5 {
+  font-size: 22px; }
