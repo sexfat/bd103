@@ -1,0 +1,14 @@
+@import "base/reset";
+
+@import "base/var";
+@import "base/font";
+@import "layout/header";
+
+
+.box {
+    margin: $num;
+    padding: $num;
+}
+
+
+

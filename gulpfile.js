@@ -41,16 +41,16 @@ gulp.task('sass:watch', function () {
 
 //  browserSync 瀏覽器同步
 
-gulp.task('serve', ['sass'], function() {
+gulp.task('default', ['sass'], function() {
     
         browserSync.init({
             server: {
                 baseDir: "./",
-                index: "a.html"
+                index: "index.html"
             }
         });
     
-        gulp.watch("sass/*.scss", ['sass']);
+        gulp.watch(["sass/*.scss","sass/**/*.scss"] , ['sass']);
         gulp.watch("*.html").on('change', reload);
     });
 
@@ -59,12 +59,12 @@ gulp.task('serve', ['sass'], function() {
   
 
 // js move
-gulp.task('default', function() {
-    // 将妳的任務代碼放在這
-    return gulp.src('*.html')
-    .pipe(gulp.dest('build/'));
+// gulp.task('default', function() {
+//     // 将妳的任務代碼放在這
+//     return gulp.src('*.html')
+//     .pipe(gulp.dest('build/'));
    
-  });
+//   });
 
   console.log('no error');
 
