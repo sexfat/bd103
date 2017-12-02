@@ -2,6 +2,7 @@
 @import "base/var";
 @import "base/font";
 @import "layout/header";
+@import "mixins/push";
 .box {
     margin: $num;
     padding: $num;
@@ -58,3 +59,122 @@ h4 {
 h5 {
     font-size: floor($font-base * 1.6);
 }
+
+// @for $i from 1 through 20 {
+//     .col_#{$i} {
+//         width: $i * 1px;
+//     }
+// }
+// $var_num: 10;
+//   @for $i from 1 through $var_num {
+//     .col_#{$i}{
+//         width: $i * 1px ;
+//     }
+//   }
+// }
+@mixin for_col($num) {
+    @for $i from 1 through $num {
+        .col_#{$i} {
+            width: $i * 1px;
+        }
+    }
+}
+
+@mixin for_col_class($classname, $num) {
+    @for $i from 1 through $num {
+        .#{$classname}_#{$i} {
+            width: $i * 1px;
+        }
+    }
+}
+
+@include for_col(20);
+@include for_col_class(names, 100);
+@mixin push-left ($num) {
+    @for $i from 1 through $num {
+        .margin-left-#{$i} {
+            margin-left: $i + px;
+        }
+    }
+}
+
+// @include push (right, 100);
+// @include push (bottom, 200);
+// @include push-left (100);
+$theme: yellow;
+@if $theme==blue {
+    .theme_blue {
+        color: blue;
+    }
+}
+
+@else if $theme==yellow {
+    .theme_yellow {
+        color: yellow;
+    }
+}
+
+@mixin theme-color ($theme) {
+    @if $theme==blue {
+        .theme_blue {
+            @content color: blue;
+        }
+    }
+    @else if $theme==yellow {
+        .theme_yellow {
+            @content;
+            color: yellow;
+        }
+    }
+    @else {
+        .theme_other {
+            @content;
+            color: green;
+        }
+    }
+}
+
+@include theme-color(other) {
+    margin: 10px;
+    padding: 10px;
+}
+
+@mixin img_url($name) {
+    @each $filename in $name {
+        .#{$filename} {
+            background-image: url('img/#{$filename}.jpg');
+            width: 100%;
+        }
+    }
+}
+
+@include img_url([a1,a2,a3,a4,a5]);
+@each $filename in a1,
+a2,
+a3,
+a4 {
+    .#{$filename} {
+        background-image: url('img/#{$filename}.jpg');
+        width: 100%;
+    }
+} // 
+@each $title_font,
+$size in (h1: 4em,
+h2: 3.5em,
+h3:3em,
+h4:2.3em) {
+    #{$title_font} {
+        font-size: $size;
+    }
+}
+
+@mixin grid-col($col) {
+    @for $i from 1 through $col {
+        .col-md-#{$i} {
+            width: ($i /$col) *100%;
+            
+        }
+    }
+}
+
+@include grid-col(24);

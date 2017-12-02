@@ -1,0 +1,7 @@
+@mixin push ($dir,$num) {
+    @for $i from 1 through $num {
+        .margin-#{$dir}-#{$i} {
+            margin-#{$dir}: $i + px;
+        }
+    }
+}
