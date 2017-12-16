@@ -1,8 +1,12 @@
 @import "base/reset";
 @import "base/var";
 @import "base/font";
+@import "mixins/rwd";
 @import "layout/header";
 @import "mixins/push";
+@import "respond/desktop";
+@import "respond/medium";
+@import "respond/small";
 .box {
     margin: $num;
     padding: $num;
@@ -172,9 +176,199 @@ h4:2.3em) {
     @for $i from 1 through $col {
         .col-md-#{$i} {
             width: ($i /$col) *100%;
-            
         }
     }
 }
 
+@mixin area($width,
+$height) {
+    height: $height + px;
+    width: $width + px;
+}
+
 @include grid-col(24);
+.box_color {
+    // background-color: #16f002;
+    // background-color: darken(#16f002 , 10);
+    @include area(300,
+    50); // height: 300px;
+    // width: 50px;
+}
+
+//
+@mixin color_lighten($color,
+$amount) {
+    @for $i from 1 through $amount {
+        .color_lighten_#{$i} {
+            background-color: lighten($color, $i*3);
+            height: 50px;
+            width: 300px;
+        }
+    }
+}
+
+//
+@mixin color_darken($color,
+$amount) {
+    @for $i from 1 through $amount {
+        .color_darken_#{$i} {
+            background-color: darkten($color, $i*3);
+            height: 50px;
+            width: 300px;
+        }
+    }
+} // @include color_lighten(rgb(1, 75, 69), 10);
+// @include color_darken(rgb(1, 75, 69), 10);
+@mixin color-gradient($tone,
+$color,
+$amount,
+$width:300,
+$height:50) {
+    @if ($tone==light) and ($amount < 20) {
+        @for $i from 1 through $amount {
+            .color_#{$tone}_#{$i} {
+                background-color: lighten($color, $i*5);
+                @include area ($width,
+                $height);
+            }
+        }
+    }
+    @else if($tone==darken) and ($amount < 20) {
+        @for $i from 1 through $amount {
+            .color_#{$tone}_#{$i} {
+                background-color: darkten($color, $i*5);
+                @include area ($width,
+                $height);
+            }
+        }
+    }
+}
+
+@include color-gradient(darken,
+#16f002,
+19,
+400,
+30);
+@mixin layout ($class,
+$direction,
+$width,
+$height) {
+    .#{$class} {
+        float: $direction;
+        @include area($width,
+        $height);
+        min-height: 1px;
+        display: inline-block;
+        &:after {
+            content: '';
+            clear: both;
+        }
+    }
+}
+
+@include layout (box1,
+left,
+400px,
+40px);
+@include layout (space,
+right,
+100px,
+20px);
+.wrapper {
+    @include layout (space,
+    right,
+    100px,
+    20px);
+}
+
+@mixin layout-block($choice,
+$class,
+$direction,
+$width,
+$height) {
+    @if $choice==yes {
+        .#{$class} {
+            float: $direction;
+            @include area($width,
+            $height);
+            min-height: 1px;
+            display: inline-block;
+            &:after {
+                content: '';
+                clear: both;
+            }
+        }
+    }
+    @else {
+        .#{$class} {
+            @include area($width,
+            $height);
+            min-height: 1px;
+        }
+    }
+}
+
+@include layout-block(none,
+dir,
+left,
+400,
+30);
+$map: ( key : 5px 20px 40px 50px,
+key2: 10px,
+key3: 20px,
+key4: 30px,
+content: 'hi world!!',
+);
+.box {
+    margin: map-get($map, key2);
+    content: map-get($map, content);
+}
+
+$list: 100 30 40 50 60;
+.boxs {
+    padding: length($list);
+    margin: nth($list, 3);
+}
+
+$breakpoint: ( 
+small: 480px,
+medium: 720px,
+desktop: 1366px,
+);
+
+
+
+@mixin respond-each ($respond) {
+    @each $viewpoint,
+    $num in $breakpoint {
+        @if $respond == $viewpoint {
+            @media all and (min-width: $num) {
+                @content;
+            }
+        }
+    }
+}
+
+
+@include respond-each(medium){
+  .box {
+      width: 80%;
+  }
+}
+
+@include respond-each(desktop){ 
+      .box {
+          width: 100%;
+      }
+};
+
+
+@include respond-each(small){ 
+    .box {
+        width: 60%;
+    }
+};
+
+
+
+
