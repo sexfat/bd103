@@ -46,7 +46,7 @@ gulp.task('default', ['sass'], function() {
         browserSync.init({
             server: {
                 baseDir: "./",
-                index: "index.html"
+                index: "tweenmax.html"
             }
         });
     
