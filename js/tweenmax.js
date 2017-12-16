@@ -106,9 +106,9 @@ $(function () {
     }))
 })
 
+
+
 //scroll 觸發事件
-
-
 
 $(function () {
     var controller = new ScrollMagic.Controller();
@@ -146,6 +146,36 @@ $(function () {
         .setTween(tween01)
         .addIndicators()
         .addTo(controller)
+    console.log('scroll_01 ok');
+
+
+
+    //第二個場景
+    var tween02 = TweenMax.to('.boxso', 1, {
+        x: 100
+    })
+
+
+
+    var scene2 = new ScrollMagic.Scene({
+            triggerElement: "#trigger2",
+            offset: '100px',
+            duration: '300',
+            reverse: true
+        })
+        .setClassToggle('.boxers', 'fadein')
+        .setTween(tween02)
+        .addIndicators()
+        .addTo(controller)
+    console.log('scroll_04 ok');
+
+
+
+
+    
+    var scene = document.getElementById('parallax_box');
+    var parallax = new Parallax(scene);
+
 
 
 
