@@ -30,3 +30,12 @@
 
 .wrapper .section_04 {
   background-color: #2bd1e4; }
+
+.wrapper .section_05 .box1 {
+  position: relative;
+  top: 300px !important;
+  left: 200px !important; }
+
+.wrapper .section_05 .box2 {
+  top: 100px !important;
+  left: 100px !important; }

@@ -174,7 +174,10 @@ $(function () {
 
     
     var scene = document.getElementById('parallax_box');
-    var parallax = new Parallax(scene);
+    // var parallax = new Parallax(scene);
+    var parallaxInstance = new Parallax(scene, {
+        relativeInput: false
+      });
 
 
 
